@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ThanksController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +80,10 @@ Route::middleware('auth')->post('/user/infomation/update', [FrontController::cla
 Route::prefix('/cartlist')->group(function(){
     Route::get('/buyinfo', [InfoController::class, 'index'])->name('buyinfo');
     Route::get('/thanksPage', [InfoController::class, 'store'])->name('thanksPage');
+});
+
+Route::prefix('/cartlist')->group(function(){
+    Route::get('/cartlist', [CartController::class,'index'])->name('cartlist');
+    Route::get('/deliverycartlist', [CartController::class,'store'])->name('deliverycartlist');
+
 });
